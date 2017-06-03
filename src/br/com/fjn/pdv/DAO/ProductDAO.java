@@ -25,23 +25,23 @@ public class ProductDAO {
 		em.close();
 	}
 
-	public void updateProduct(Product product) {
+	public void updateProduct(Product product, double unitaryValue) {
 
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
+		product.setUnitaryValue(unitaryValue);
 		em.merge(product);
 		em.getTransaction().commit();
 		em.close();
 	}
 
 	public Product searchProduct(Product product) {
-		System.out.println("Passou no banco");
+		
 		EntityManager em = Connection.getManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Product> criteria = cb.createQuery(Product.class);
 		Root<Product> entidadeRaiz = criteria.from(Product.class);
 		criteria.where(cb.equal(entidadeRaiz.get("name"), product.getName()));
-		System.out.println("pegou o dado do banco" + product.getName());
 		return em.createQuery(criteria).getSingleResult();
 
 	}

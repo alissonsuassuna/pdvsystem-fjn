@@ -34,24 +34,27 @@
 	<div class="container">
 		<h1>Editar Funcionario</h1>
 		<!--  -->
-		<form action="/administrador/f-atualizar" method="post">
-			Nome: <input type="text" name="employee.name" class="form-control" />
-			CPF: <input type="text" name="employee.cpf" class="form-control" /> 
-			Data de Nascimento: <input type="date" name="employee.dateBirth" class="form-control"/>
+		<form action="administrador/f-atualizar" method="post">
+			Nome do funcionário a ser editado: <input type="text" name="employee.name" class="form-control" />
 			Email: <input type="email" name="employee.email" class="form-control"/>
+			Cidade: <input type="text" name="city.name" class="form-control"/>
+			Estado: <input type="text" name="state.name" class="form-control"/>
+			Rua: <input type="text" name="address.street" class="form-control"/>
+			Bairro: <input type="text" name="address.burgh" class="form-control"/>
+			Número: <input type="text" name="address.number" class="form-control"/>
 			<br>
 			<div class="form-group">
 				<div class="col-md-8">
-					<select required="required" class="form-control">
-						<option value="manager">Administrador</option>
-						<option value="salesman">Vendedor</option>
+					<select name="emp" required="required" class="form-control">
+						<option value="a">Administrador</option>
+						<option value="v">Vendedor</option>
 					</select>
 				</div>
 			</div>	
 			<br>
 			<h1>Login</h1>
 			<br>
-			Nome de Usuário: <input type="text" name="user.userName" class="form-control" />
+			Novo Nome de Usuário: <input type="text" name="user.userName" class="form-control" />
 			Nova Senha: <input type="password" name="user.password" class="form-control" />
 			<br>
 			<br>

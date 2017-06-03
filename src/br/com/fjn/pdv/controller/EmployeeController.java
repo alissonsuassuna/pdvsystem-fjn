@@ -66,10 +66,21 @@ public class EmployeeController {
 
 	// ATUALIZAR FUNCIONARIO
 	@Post("/administrador/f-atualizar")
-	public void employeeUpdate(User user, Employee employee) {
+	public void employeeUpdate(String emp, User user, Employee employee, Office office, Address address, City city,
+			State state) {
+		
+		EmployeeDAO edao = new EmployeeDAO();
 		UserDAO udao = new UserDAO();
-		user.setEmployee(employee);
-		udao.updateUser(user);
+		Employee e = edao.searchEmployee(employee);
+		if (emp.equals("a")) {
+			e.setOffice(office.ADMINISTRADOR);
+		} else {
+			e.setOffice(office.VENDEDOR);
+		}
+		user.setEmployee(e);
+		udao.updateUser(user, employee, address, city, state);
+		result.redirectTo(this).employeeList();
+		
 	}
 
 	@Get("/administrador/funcionarioatualizar")

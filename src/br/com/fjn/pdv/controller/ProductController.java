@@ -75,10 +75,10 @@ public class ProductController {
 	// ATUALIZAR PRODUTO
 	@Post("/administrador/p-atualizar")
 	public void productUpdate(Product product) {
-//		ProductDAO pdao = new ProductDAO();
-	//	Product p = pdao.getProductName(product);
-		//pdao.updateProduct(p);
-		//result.redirectTo(this).productList();
+		ProductDAO pdao = new ProductDAO();
+	    Product p = pdao.searchProduct(product);
+		pdao.updateProduct(p, product.getUnitaryValue());
+		result.redirectTo(this).productList();
 	}
 
 	@Get("/administrador/produtoatualizar")

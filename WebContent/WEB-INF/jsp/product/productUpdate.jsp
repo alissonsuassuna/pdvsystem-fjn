@@ -44,11 +44,10 @@
 		<form action="administrador/p-atualizar" method="post">
 
            <input type="hidden" name="product.codProduct" 
-                  value="${product.codProduct }" /> 
-			Nome: <input type="text" name="product.name" value="${product.name }" class="form-control" />
-			Valor unitario: <input type="text" name="product.unitaryValue" value="${product.unitaryValue }"
-				class="form-control" /> Fábricante: <input type="text"
-				name="product.manufacturer" value="${product.manufacturer }" class="form-control" />
+                  value="${product.codProduct }" />       
+			Nome do produto a ser editado: <input type="text" name="product.name" value="${product.name }" class="form-control" />
+			Novo Valor unitario: <input type="text" name="product.unitaryValue" value="${product.unitaryValue }"
+				class="form-control" /> 
              
             <br> 
 			<button type="submit" class="btn btn-primary">OK</button>

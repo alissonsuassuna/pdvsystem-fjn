@@ -69,8 +69,9 @@
 			</table>
 		</div>
 
+		<!--
 		<div class="alert alert-success">${msg}</div>
-
+        --> 
 
 		<!-- /#page-content-wrapper -->
 	</div>

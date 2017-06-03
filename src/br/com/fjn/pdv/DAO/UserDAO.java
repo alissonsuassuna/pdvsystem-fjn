@@ -7,9 +7,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import br.com.fjn.pdv.model.Address;
+import br.com.fjn.pdv.model.City;
 import br.com.fjn.pdv.model.Employee;
 import br.com.fjn.pdv.model.Office;
 import br.com.fjn.pdv.model.Product;
+import br.com.fjn.pdv.model.State;
 import br.com.fjn.pdv.model.User;
 
 public class UserDAO {
@@ -36,9 +39,13 @@ public class UserDAO {
 	}
 
 	
-	public void updateUser(User user){
+	public void updateUser(User user, Employee employee, Address address, City city, State state){
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
+        city.setState(state);
+		address.setCity(city);
+		employee.setAddress(address);
+		user.setEmployee(employee);
 		em.merge(user);
 		em.getTransaction().commit();
 		em.close();
