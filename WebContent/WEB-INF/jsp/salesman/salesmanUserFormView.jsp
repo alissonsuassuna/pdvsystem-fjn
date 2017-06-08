@@ -48,7 +48,6 @@
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand"><a href="#"> Menu de Vendedor </a></li>
 				<li><a id="click-sell" href="#">Vender Produto</a></li>
-				<li><a id="click-search-sale" href="#"> Buscar Vendas</a></li>
 				<li><a id="click-search-product" href="#">Buscar Produtos</a></li>
 				<li><a id="click-list-product" href="#">Listar Produtos</a></li>
 

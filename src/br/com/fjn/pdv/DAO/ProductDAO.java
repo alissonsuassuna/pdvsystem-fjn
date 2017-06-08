@@ -47,13 +47,8 @@ public class ProductDAO {
 	}
 
 
-	public Product searchProductId(Product product) {
-		EntityManager em = Connection.getManager();
-		return em.find(Product.class, product.getCodProduct());
-	}
 
 	public void removeProductId(Product product) {
-		System.out.println("passou aqui" + product.getCodProduct());
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
 		em.remove(em.find(Product.class, product.getCodProduct()));

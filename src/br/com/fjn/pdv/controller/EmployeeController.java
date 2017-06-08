@@ -16,6 +16,7 @@ import br.com.fjn.pdv.model.Address;
 import br.com.fjn.pdv.model.City;
 import br.com.fjn.pdv.model.Employee;
 import br.com.fjn.pdv.model.Office;
+import br.com.fjn.pdv.model.Product;
 import br.com.fjn.pdv.model.State;
 import br.com.fjn.pdv.model.User;
 
@@ -59,28 +60,28 @@ public class EmployeeController {
 
 	}
 
-	@Get("/administrador/user-remove")
+	/*@Get("/administrador/user-remove")
 	public void removeUser(User user) {
 		UserDAO userDAO = new UserDAO();
 		userDAO.removeUserId(user);
-	}
+	}*/
 
 	// ATUALIZAR FUNCIONARIO
 	@Post("/administrador/f-atualizar")
-	public void employeeUpdate(User user, Employee employee, Office office, Address address, City city,
-			State state, String emp) {
-		
+	public void employeeUpdate(User user, Employee employee, Office office, Address address, City city, State state,
+			String emp) {
+
 		UserDAO udao = new UserDAO();
 		if (emp.equals("a")) {
 			employee.setOffice(office.ADMINISTRADOR);
 		} else {
 			employee.setOffice(office.VENDEDOR);
 		}
-		User u = udao.searchUser(user.getUserName());
+		User u = udao.searchUser(user);
 		udao.updateUser(u, employee, address, city, state, office, employee.getEmail(), address.getStreet(),
 				address.getBurgh(), address.getNumber(), city.getName(), state.getName());
 		result.redirectTo(this).employeeList();
-		
+
 	}
 
 	@Get("/administrador/funcionarioatualizar")
@@ -90,7 +91,6 @@ public class EmployeeController {
 
 	// BUSCAR FUNCIONARIO
 
-	
 	// LISTAR FUNCIONARIOS
 	@Get("/administrador/funcionariolistar")
 	public List<Employee> employeeList() {
@@ -99,5 +99,24 @@ public class EmployeeController {
 
 		return employeeDAO.listEmployee();
 	}
+
+	// Remove funcionario pelo id na view
+	/*@Get("/administrador/funcionarioremover")
+	public void EmployeeRemove() {
+		
+	}*/
+	
+	/*
+	public void EmployeeRemove(User user){
+		UserDAO dao = new UserDAO();
+		dao.removeUser(user);
+		result.redirectTo(this).EmployeeContentRemove();
+		
+	}
+	
+	@Get("/removeEmployee")
+	public void EmployeeContentRemove(){
+		
+	}*/
 
 }

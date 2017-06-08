@@ -38,11 +38,11 @@ $(document).ready(function() {
 	});
 });
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	$('#click-update-employee').click(function() {
 		$('#layout').load('administrador/funcionarioatualizar');
 	});
-});
+});*/
 
 $(document).ready(function() {
 	$('#click-list-employee').click(function() {
@@ -50,11 +50,11 @@ $(document).ready(function() {
 	});
 });
 
-$(document).ready(function() {
-	$('#click-search-sale').click(function() {
-		$('#layout').load('administrador-vendedor/vendabuscar');
+/*$(document).ready(function() {
+	$('#click-list-sale').click(function() {
+		$('#layout').load('administrador-vendedor/vendalistar');
 	});
-});
+});*/
 
 $(document).ready(function() {
 	$('#click-up-stock').click(function() {
@@ -62,16 +62,9 @@ $(document).ready(function() {
 	});
 });
 
-//Função para buscar produto via ajax
-/*
-$(document).ready(function() {
-	$('#form-buscar').submit(function(event) {
-		event.preventDefault();
-		$.post('administrador/p-buscar', $(this).serialize(), function(data){
-			$("#content").html(data);
-			
-		});
-		
+/*$(document).ready(function() {
+	$('#click-remove-employee').click(function() {
+		$('#layout').load('administrador/funcionarioremover');
 	});
-	*/
+});*/
 

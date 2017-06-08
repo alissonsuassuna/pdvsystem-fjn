@@ -37,6 +37,8 @@ public class SaleDAO {
 		return em.createQuery(criteria).getResultList();
 	}
 	
+
+	
 	public void valueTotalSale(Product product,Sale sale, int value){
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();

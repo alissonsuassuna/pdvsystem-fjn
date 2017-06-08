@@ -46,6 +46,7 @@
 				<thead>
 				    <th>Produto</th>
 				    <th>Valor Unitário</th>
+				     <th>Quantidade</th>
 					<th>Data</th>
 					<th>Valor Total</th>
 				</thead>
@@ -54,6 +55,7 @@
 						<tr>
 						    <td>${itemsale.product.name}</td>
 						    <td>${itemsale.product.unitaryValue}</td>
+						    <td>${itemsale.amount}</td>
 							<td>${itemsale.sale.date}</td>
 							<td>${itemsale.sale.valueTotal}</td>
 						</tr>
@@ -72,11 +74,16 @@
 	<script src="../js/bootstrap.min.js"></script>
 
 	<!-- Menu Toggle Script -->
+	<script src="../js/scriptAjax.js"></script>
+
+	<!-- Menu Toggle Script -->
 	<script>
 		$("#menu-toggle").click(function(e) {
 			e.preventDefault();
 			$("#wrapper").toggleClass("toggled");
 		});
+		
+		
 	</script>
 
 </body>

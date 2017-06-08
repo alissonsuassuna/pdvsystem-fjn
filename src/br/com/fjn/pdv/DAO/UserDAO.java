@@ -29,11 +29,13 @@ public class UserDAO {
 		return em.find(User.class, user.getCodUser());
 	}
 	
-	public void removeUserId(User user) {
+	public void removeUser(User user) {
 	
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
-		em.remove(em.find(User.class, user.getCodUser()));
+		User u = searchUser(user);
+		em.remove(u);
+		//em.remove(user);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -64,7 +66,7 @@ public class UserDAO {
 		em.merge(user);
 		em.getTransaction().commit();
 		em.close();
-	}
+	} 
 	public User userExist(User user){
 		
 		
@@ -86,12 +88,12 @@ public class UserDAO {
 		 	
 	}
 	
-	public User searchUser(String nameSearch){
+	public User searchUser(User user){
 		EntityManager em = Connection.getManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<User> criteria = cb.createQuery(User.class);
 		Root<User> entidadeRaiz = criteria.from(User.class);
-		criteria.where(cb.equal(entidadeRaiz.get("userName"), nameSearch));
+		criteria.where(cb.equal(entidadeRaiz.get("userName"), user.getUserName()));
 		return em.createQuery(criteria).getSingleResult();
 	}
 	

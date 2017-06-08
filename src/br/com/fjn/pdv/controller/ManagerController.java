@@ -57,7 +57,7 @@ public class ManagerController {
 		
 	}
 	
-	@Get("/administrador/buscarconteudovenda")
+	/*@Get("/administrador/buscarconteudovenda")
 	public void productContentSale() throws ParseException{
 	}
 	
@@ -67,7 +67,7 @@ public class ManagerController {
 		SaleDAO sdao = new SaleDAO();
 		result.include("saleSearch", sdao.searchSaleByDate(beginDate, endDate));
 	    result.of(this).productContentSale();
-	}
+	}*/
 	
 	//AUMENTAR ESTOQUE
 	@Post("/administrador/estoque")

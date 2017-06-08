@@ -57,11 +57,8 @@
 
 				<li><a id="click-add-employee" href="#">Adicionar
 						Funcionario</a></li>
-				<li><a id="click-update-employee" href="#">Editar
-						Funcionario</a></li>
 				<li><a id="click-list-employee" href="#">Listar
-						Funcionarios</a></li>
-				<li><a id="click-search-sale" href="#">Buscar Vendas</a></li>
+						Funcionarios</a></li>	
 				<li><a id="click-up-stock" href="#">Aumentar Estoque</a></li>
 			</ul>
 		</div>

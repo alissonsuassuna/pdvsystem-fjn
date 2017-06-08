@@ -40,4 +40,18 @@ public class EmployeeDAO {
 		em.close();
 		return employee;
      }
+	
+	public Employee searchEmployeeId(Employee employee) {
+		EntityManager em = Connection.getManager();
+		return em.find(Employee.class, employee.getCpf());
+	}
+
+	public void removeEmployeeId(Employee employee) {
+
+		EntityManager em = Connection.getManager();
+		em.getTransaction().begin();
+		em.remove(em.find(Employee.class, employee.getCpf()));
+		em.getTransaction().commit();
+		em.close();
+	} 
 }

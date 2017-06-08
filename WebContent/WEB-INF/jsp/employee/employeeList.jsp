@@ -50,7 +50,7 @@
 					<th>Data de Nascimento</th>
 					<th>Email</th>
 					<th>Cargo</th>
-					<th>Remover</th>
+					<!-- <th>Remover</th> -->
 				</thead>
 				<tbody>
 					<c:forEach items="${employeeList }" var="employee">
@@ -60,9 +60,9 @@
 							<td>${employee.dateBirth}</td>
 							<td>${employee.email}</td>
 							<td>${employee.office}</td>
-							<td><a
-								href="<c:url value='/administrador/remove?employee.cpf=${employee.cpf}'/>">Remover</a>
-							</td>
+							<!--  <td><a
+								href="<c:url value='/administrador/remove-user?user.codUser=${user.codUser}'/>">Remover</a>
+							</td> -->
 						</tr>
 					</c:forEach>
 				</tbody>
