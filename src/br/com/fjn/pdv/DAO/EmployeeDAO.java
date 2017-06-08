@@ -19,13 +19,13 @@ import br.com.fjn.pdv.model.User;
 public class EmployeeDAO {
 	
 	
-	public Employee searchEmployee(Employee employee){
+	public Employee searchEmployee(String employee){
 		
 		EntityManager em = Connection.getManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Employee> criteria = cb.createQuery(Employee.class);
 		Root<Employee> entidadeRaiz = criteria.from(Employee.class);
-		criteria.where(cb.equal(entidadeRaiz.get("name"), employee.getName()));
+		criteria.where(cb.equal(entidadeRaiz.get("name"), employee));
 		return em.createQuery(criteria).getSingleResult();
 	}
 	

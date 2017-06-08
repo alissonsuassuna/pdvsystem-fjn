@@ -52,52 +52,26 @@ public class LoginUserController {
 	@Post("login/autentica")
 	public void checkUserLogin(User user) {
 
-		try {
-			userFromDB = userDao.userExist(user);
-		} catch (NoResultException e) {
-			result.redirectTo(this).loginForm();
-		}
+		userFromDB = userDao.userExist(user);
 
-		try {
-			if (userFromDB == null) {
-				validator.add(new I18nMessage("login", "login.invalido"));
-				validator.onErrorUsePageOf(this).loginForm();
-			}
+		if (userFromDB == null) {
+			result.include("msgLogin", "Login inválido!").redirectTo(this).loginForm();
 
-		} catch (NullPointerException e) {
-
-			validator.add(new I18nMessage("login", "login.invalido"));
-			validator.onErrorUsePageOf(this).loginForm();
-		}
-
-		System.out.println("Passou 1");
-
-		userLogged.setUser(userFromDB);
-
-		try {
-			System.out.println("Passou 2");
+		} else {
+			userLogged.setUser(userFromDB);
 			if (userFromDB.getEmployee().isAdmin()) {
-				System.out.println("Passou 3");
 				result.redirectTo(ManagerController.class).managerUserFormView();
 			} else {
-				System.out.println("Passou 4");
 				result.redirectTo(SalesmanController.class).salesmanUserFormView();
 			}
-		} catch (NoResultException e) {
-			System.out.println("Passou 5");
-	
-			result.redirectTo(this).loginForm();
-		} catch (NullPointerException e2){
-			System.out.println("Passou 6");
-		
-			validator.onErrorUsePageOf(this).loginForm();
-			result.redirectTo(this).logout();
-		
 		}
 
+		// result.redirectTo(this);
+
 	}
+
 	@Get("login/logout")
-	public void logout(){
-		
+	public void logout() {
+
 	}
 }

@@ -35,7 +35,6 @@
 		<h1>Editar Funcionario</h1>
 		<!--  -->
 		<form action="administrador/f-atualizar" method="post">
-			Nome do funcionário a ser editado: <input type="text" name="employee.name" class="form-control" />
 			Email: <input type="email" name="employee.email" class="form-control"/>
 			Cidade: <input type="text" name="city.name" class="form-control"/>
 			Estado: <input type="text" name="state.name" class="form-control"/>
@@ -54,7 +53,7 @@
 			<br>
 			<h1>Login</h1>
 			<br>
-			Novo Nome de Usuário: <input type="text" name="user.userName" class="form-control" />
+			Nome de Usuário a ser editado: <input type="text" name="user.userName" class="form-control" />
 			Nova Senha: <input type="password" name="user.password" class="form-control" />
 			<br>
 			<br>

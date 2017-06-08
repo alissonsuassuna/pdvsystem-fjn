@@ -42,7 +42,8 @@
 		<h1>Vender Produto</h1>
 		<!-- readonly="readonly" -->
 		<form action="administrador-vendedor/vender" method="post">
-			Nome: <input type="text" name="product.name" class="form-control" />
+		    Nome do Funcionário: <input type="text" name="employee.name" class="form-control" />
+			Nome do Produto: <input type="text" name="product.name" class="form-control" />
 			Quantidade: <input type="text" name="product.amount"
 				class="form-control" /> </br>
 			<button type="submit" class="btn btn-primary">Vender</button>

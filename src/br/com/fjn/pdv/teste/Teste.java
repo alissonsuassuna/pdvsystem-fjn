@@ -1,19 +1,26 @@
 package br.com.fjn.pdv.teste;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import br.com.fjn.pdv.DAO.Connection;
+import br.com.fjn.pdv.DAO.EmployeeDAO;
+import br.com.fjn.pdv.DAO.SaleDAO;
 import br.com.fjn.pdv.DAO.UserDAO;
 import br.com.fjn.pdv.model.Address;
 import br.com.fjn.pdv.model.City;
 import br.com.fjn.pdv.model.Employee;
+import br.com.fjn.pdv.model.ItemSale;
 import br.com.fjn.pdv.model.Office;
+import br.com.fjn.pdv.model.Sale;
 import br.com.fjn.pdv.model.State;
 import br.com.fjn.pdv.model.User;
 
 public class Teste {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		//Criação de usuário interno para acessar o sistem
 		/*
@@ -42,6 +49,33 @@ public class Teste {
 		
 		userDao.addUser(user);
 		*/
+		
+		//Listar vendas
+		/*SaleDAO udao = new SaleDAO();
+		List<ItemSale> i = udao.listSale();
+		for (ItemSale itemSale : i) {
+			System.out.println(itemSale.getProduct().getName() + "\n" + itemSale.getSale().getValueTotal());
+		}*/
+
+		
+		//Buscar venda por data
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = sdf.parse("06/06/2017");
+		Date d = sdf.parse("07/06/2017");
+		
+		SaleDAO dao = new SaleDAO();
+		List<Sale> list = dao.searchSaleByDate(date, d);
+		for (Sale sale : list) {
+			System.out.println(sale.getDate());
+		}
+		
+		//Update
+		/*UserDAO dao = new UserDAO();
+		User u = dao.searchUser("pdv");
+		u.setPassword("000");
+		dao.updateUser(u);*/
+		
+		
 		
 	}
 }

@@ -59,8 +59,6 @@
 						Funcionario</a></li>
 				<li><a id="click-update-employee" href="#">Editar
 						Funcionario</a></li>
-				<li><a id="click-search-employee" href="#">Buscar
-						Funcionario</a></li>
 				<li><a id="click-list-employee" href="#">Listar
 						Funcionarios</a></li>
 				<li><a id="click-search-sale" href="#">Buscar Vendas</a></li>

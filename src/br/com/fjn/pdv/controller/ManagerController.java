@@ -1,5 +1,6 @@
 package br.com.fjn.pdv.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +55,18 @@ public class ManagerController {
 	@Get("/administrador-vendedor/vendabuscar")
 	public void saleSearch(){
 		
+	}
+	
+	@Get("/administrador/buscarconteudovenda")
+	public void productContentSale() throws ParseException{
+	}
+	
+	@Post("/administrador/p-buscar-venda")
+	public void saleSearch(Date beginDate, Date endDate) throws ParseException {
+		System.out.println(beginDate + " " + endDate);
+		SaleDAO sdao = new SaleDAO();
+		result.include("saleSearch", sdao.searchSaleByDate(beginDate, endDate));
+	    result.of(this).productContentSale();
 	}
 	
 	//AUMENTAR ESTOQUE

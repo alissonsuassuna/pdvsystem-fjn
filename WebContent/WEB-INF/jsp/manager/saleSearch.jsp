@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>PDV System - Administrador</title>
+<title>PDV System</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -38,13 +38,13 @@
 </head>
 <body>
 
-	<div action="administrador-vendedor/vendalistar" class="container">
+	<div class="container"> 
 		<h1>Buscar Vendas</h1>
-		<!--  -->
-		<form action="administrador-vendedor/vendalistar" method="get">
-			Data Inicial: <input type="date" name="sale.date" class="form-control" />
+		
+		<form action="administrador/p-buscar-venda" method="post">
+			Data Inicial: <input type="date" name="beginDate" class="form-control" />
 			<br>
-			Data Final: <input type="date" name="sale.date" class="form-control" />
+			Data Final: <input type="date" name="endDate" class="form-control" />
 			<br>
 			<button type="submit" class="btn btn-primary">Buscar</button>
 		</form>

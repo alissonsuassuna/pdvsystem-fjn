@@ -1,6 +1,7 @@
 package br.com.fjn.pdv.DAO;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -11,12 +12,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import br.com.fjn.pdv.model.ItemSale;
 import br.com.fjn.pdv.model.Product;
 import br.com.fjn.pdv.model.Sale;
 
 public class SaleDAO {
 	
-	Calendar calendar = Calendar.getInstance();
 	
 	public void saveSale(Sale sale){
 		EntityManager em = Connection.getManager();
@@ -50,12 +51,12 @@ public class SaleDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Sale> listSale() {
+	public List<ItemSale> listSale() {
 
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
-		Query query = (Query) em.createQuery("select sale from Sale sale");
-		List<Sale> sale = query.getResultList();
+		Query query = (Query) em.createQuery("select i from ItemSale i");
+		List<ItemSale> sale = query.getResultList();
 		em.getTransaction().commit();
 		em.close();
 		return sale;

@@ -1,7 +1,8 @@
 package br.com.fjn.pdv.DAO;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -11,7 +12,6 @@ import br.com.fjn.pdv.model.Address;
 import br.com.fjn.pdv.model.City;
 import br.com.fjn.pdv.model.Employee;
 import br.com.fjn.pdv.model.Office;
-import br.com.fjn.pdv.model.Product;
 import br.com.fjn.pdv.model.State;
 import br.com.fjn.pdv.model.User;
 
@@ -39,13 +39,28 @@ public class UserDAO {
 	}
 
 	
-	public void updateUser(User user, Employee employee, Address address, City city, State state){
+	public void updateUser(User user, Employee employee, Address address, City city, State state,
+			Office office, String email, String street,String burgh, int number,
+			String city_name, String state_name){
+		
 		EntityManager em = Connection.getManager();
 		em.getTransaction().begin();
-        city.setState(state);
+		
+		state.setName(state_name);
+		
+		city.setState(state);
+		city.setName(city_name);
+		
 		address.setCity(city);
+		address.setStreet(street);
+		address.setBurgh(burgh);
+		address.setNumber(number);
+		
 		employee.setAddress(address);
+		employee.setEmail(email);
+		
 		user.setEmployee(employee);
+		user.setPassword(user.getPassword());
 		em.merge(user);
 		em.getTransaction().commit();
 		em.close();
@@ -63,8 +78,12 @@ public class UserDAO {
 			Predicate nameAndPasswod = cb.and(userNamePredicate, passwordPredicate);
 			
 		 	criteria.where(nameAndPasswod);
-		
-		 	return em.createQuery(criteria).getSingleResult();
+		 	List<User> result = em.createQuery(criteria).getResultList();	
+		    if (result.isEmpty()){
+		    	return null;
+		    }
+		 	return result.get(0);
+		 	
 	}
 	
 	public User searchUser(String nameSearch){

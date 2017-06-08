@@ -42,7 +42,7 @@
 							</div>
 						</div>
 				</form>
-
+                <p style="color: red;">${msgLogin}</p>
 				<div class="col-md-12">
 					<button type="submit" id="btn-login"
 						class="btn btn-md btn-danger pull-right">Entrar</button>

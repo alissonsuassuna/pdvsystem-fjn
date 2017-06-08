@@ -8,23 +8,6 @@ $(document).ready(function() {
 		$('#layout').load('administrador/produtoadicionar');
 	});
 });
-/*
-$(document).ready(function() {
-	$('#form-add').submit(function(event) {
-		event.preventDefault();
-		$.post('administrador/p-adicionar', $(this).serialize(), function(data){
-			$("#content-add").html(data);
-			//$.get('administrador/produtoadicionar', $(this).serialize(), function(data){
-				//$("#content-add").html(data);
-			//});
-		});
-		
-	});
-});
-
-*/
-
-
 $(document).ready(function() {
 	$('#click-update-product').click(function() {
 		$('#layout').load('administrador/produtoatualizar');
@@ -58,12 +41,6 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$('#click-update-employee').click(function() {
 		$('#layout').load('administrador/funcionarioatualizar');
-	});
-});
-
-$(document).ready(function() {
-	$('#click-search-employee').click(function() {
-		$('#layout').load('administrador/funcionariobuscar');
 	});
 });
 

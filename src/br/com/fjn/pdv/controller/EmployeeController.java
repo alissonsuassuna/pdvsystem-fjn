@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.fjn.pdv.DAO.EmployeeDAO;
+import br.com.fjn.pdv.DAO.ProductDAO;
 import br.com.fjn.pdv.DAO.UserDAO;
 import br.com.fjn.pdv.model.Address;
 import br.com.fjn.pdv.model.City;
@@ -66,19 +67,18 @@ public class EmployeeController {
 
 	// ATUALIZAR FUNCIONARIO
 	@Post("/administrador/f-atualizar")
-	public void employeeUpdate(String emp, User user, Employee employee, Office office, Address address, City city,
-			State state) {
+	public void employeeUpdate(User user, Employee employee, Office office, Address address, City city,
+			State state, String emp) {
 		
-		EmployeeDAO edao = new EmployeeDAO();
 		UserDAO udao = new UserDAO();
-		Employee e = edao.searchEmployee(employee);
 		if (emp.equals("a")) {
-			e.setOffice(office.ADMINISTRADOR);
+			employee.setOffice(office.ADMINISTRADOR);
 		} else {
-			e.setOffice(office.VENDEDOR);
+			employee.setOffice(office.VENDEDOR);
 		}
-		user.setEmployee(e);
-		udao.updateUser(user, employee, address, city, state);
+		User u = udao.searchUser(user.getUserName());
+		udao.updateUser(u, employee, address, city, state, office, employee.getEmail(), address.getStreet(),
+				address.getBurgh(), address.getNumber(), city.getName(), state.getName());
 		result.redirectTo(this).employeeList();
 		
 	}
@@ -89,11 +89,8 @@ public class EmployeeController {
 	}
 
 	// BUSCAR FUNCIONARIO
-	@Get("/administrador/funcionariobuscar")
-	public void employeeSearch(String name) {
 
-	}
-
+	
 	// LISTAR FUNCIONARIOS
 	@Get("/administrador/funcionariolistar")
 	public List<Employee> employeeList() {

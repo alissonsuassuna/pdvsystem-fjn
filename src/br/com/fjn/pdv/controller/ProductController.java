@@ -1,6 +1,7 @@
 package br.com.fjn.pdv.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -96,9 +97,7 @@ public class ProductController {
 	@Post("/administrador/p-buscar")
 	public void productSearch(Product product) {
 		ProductDAO pdao = new ProductDAO();
-		pdao.searchProduct(product);
-	
-	    result.include(product);
+	    result.include("product", pdao.searchProduct(product));
 	    result.redirectTo(this).productContentSearch();
 	}
 	
@@ -114,27 +113,30 @@ public class ProductController {
 
 	// VENDER PRODUTO
 	@Post("/administrador-vendedor/vender")
-	public void productSale(Sale sale, List<ItemSale> itemSale, Product product, ItemSale it) {
+	public void productSale(Sale sale, Product product, ItemSale it, Employee employee) {
 		SaleDAO sdao = new SaleDAO();
+		
         EmployeeDAO edao = new EmployeeDAO();
+        Employee e = edao.searchEmployee(employee.getName());
+        
 		ProductDAO productDAO = new ProductDAO();
 		Product p = productDAO.searchProduct(product);
-		UserLogged userLogged = new UserLogged();
-		System.out.println(userLogged.getUser());
-		sale.setEmployee(userLogged.getEmployee());
+
 		sdao.valueTotalSale(p, sale, product.getAmount());
 		sale.setDate(new java.util.Date());
-		sale.setItemSale(itemSale);
-	    sdao.saveSale(sale);
-	   
-	    
-	    it.setAmount(product.getAmount());
 		it.setProduct(p);
 		it.setSale(sale);
-
+		it.setAmount(product.getAmount());
+		ArrayList<ItemSale> list = new ArrayList<>();
+		list.add(it);
+		sale.setItemSale(list);
+		sale.setEmployee(e);
+	    sdao.saveSale(sale);
+	    
 		productDAO.lowerAmountProduct(p, product.getAmount());
-		result.redirectTo(this).productList();
-		
+		System.out.println("List " + sdao.listSale());
+		result.include("itemsaleList", sdao.listSale());
+		result.redirectTo(this).itemsaleList();
 	}
 
 	@Get("/administrador-vendedor/produtovender")
@@ -143,7 +145,7 @@ public class ProductController {
 	}
 	
 	@Get("/administrador-vendedor/vendalistar")
-	public List<Sale> saleList(){
+	public List<ItemSale> itemsaleList(){
 		SaleDAO sdao = new SaleDAO();
 		return sdao.listSale();
 	}
